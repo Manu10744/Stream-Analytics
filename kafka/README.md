@@ -1,6 +1,6 @@
 # Apache Kafka
 
-<img src="./img/kafka.jpg" width="250px" height="350px" alt="Scanned" />
+<img src="./img/kafka.jpg" alt="Scanned" />
 
 <br>
 
