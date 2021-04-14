@@ -20,14 +20,10 @@ no DS connector that supports JSON files.
 
 
 
-
-
-
-
-
-
 ## TODO:
-- Convert Tweets-Table to Stream. Currently a ``BatchTableEnvironment`` is being used. 
+- Convert Tweets-Table to Stream. Problem: Streaming from Source Files is not yet supported: 
+  https://stackoverflow.com/questions/66776601/flink-sql-csv-streaming-continuously
+  http://apache-flink-user-mailing-list-archive.2336050.n4.nabble.com/Filesystem-as-a-stream-source-in-Table-SQL-API-td39696.html
   
 
 
