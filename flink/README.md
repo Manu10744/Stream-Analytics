@@ -1,4 +1,4 @@
-## Reading Input: 
+## Loading input: 
 Flink offers three APIs: 
 - DataStream API
 - Table API
@@ -15,6 +15,19 @@ no DS connector that supports JSON files.
   This can be done in Python. Issues may arise with the (required?) partitioning of files. Also, in this case the connector-jar must be provided as a project dependency. 
 - Alternatively, the Table API offers the possibility to load data from a pandas dataframe/a collection. As JSON files can be loaded into pd dfs in Python, this could also
   be a viable option. A collection could certainly also be created from the JSON.
+  
+  EDIT: The FileSystem-Connector seems to work
+
+
+
+
+
+
+
+
+
+## TODO:
+- Convert Tweets-Table to Stream. Currently a ``BatchTableEnvironment`` is being used. 
   
 
 
