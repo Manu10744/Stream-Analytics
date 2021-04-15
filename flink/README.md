@@ -1,4 +1,4 @@
-## Reading Input: 
+## Loading input: 
 Flink offers three APIs: 
 - DataStream API
 - Table API
@@ -15,6 +15,15 @@ no DS connector that supports JSON files.
   This can be done in Python. Issues may arise with the (required?) partitioning of files. Also, in this case the connector-jar must be provided as a project dependency. 
 - Alternatively, the Table API offers the possibility to load data from a pandas dataframe/a collection. As JSON files can be loaded into pd dfs in Python, this could also
   be a viable option. A collection could certainly also be created from the JSON.
+  
+  EDIT: The FileSystem-Connector seems to work
+
+
+
+## TODO:
+- Convert Tweets-Table to Stream. Problem: Streaming from Source Files is not yet supported: 
+  https://stackoverflow.com/questions/66776601/flink-sql-csv-streaming-continuously
+  http://apache-flink-user-mailing-list-archive.2336050.n4.nabble.com/Filesystem-as-a-stream-source-in-Table-SQL-API-td39696.html
   
 
 

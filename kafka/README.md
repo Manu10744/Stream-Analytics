@@ -1,6 +1,6 @@
 # Apache Kafka
 
-<img src="./img/kafka.jpg" width="250px" height="350px" alt="Scanned" />
+<img src="./img/kafka.jpg" alt="Scanned" />
 
 <br>
 
@@ -11,5 +11,3 @@ So, an Apache Kafka Streaming Environment has three main components:
 - **Producers**: They **produce** the data and send them to the Kafka Cluster
 - **Broker**: Stores the arriving new data in the corresponding Topic and sends data to the Consumers
 - **Consumers**: Subscribes to a topic and thus **receives** a stream of the data
-
-
