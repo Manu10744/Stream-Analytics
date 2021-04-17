@@ -2,7 +2,7 @@
 
 <br>
 
-<img src="./img/kafka.jpg" alt="Scanned" />
+<img src="./img/kafka.jpg" alt="Kafka Infrastructure"/>
 
 <br>
 
@@ -17,11 +17,22 @@ So, in short, an Apache Kafka Streaming Environment has three main components:
 - **Broker**: Stores the arriving new data in the corresponding Topic and sends data to the Consumers
 - **Consumers**: Subscribes to a topic and thus **receives** a stream of the data
 
-### Useful Commands
+### Useful Commands and Settings
 
-###### List all registered Kafka Topics
-````bash
-bin/kafka-topics.sh --list --zookeeper localhost:2181
+#### Settings
+
+```bash
+# ./config/server.properties
+
+# Number of partitions per topic and thus a factor for possible parallelism.
+# Common rule of thumb: Partitions = Desired Throughput / Partition Speed
+# (Estimation of speed for one partition: 10 MB/s)
+num.partitions=1
 ```
 
+#### Commands 
+###### List all registered Kafka Topics
 
+```bash 
+bin/kafka-topics.sh --list --zookeeper localhost:2181
+```
