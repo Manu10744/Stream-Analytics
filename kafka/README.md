@@ -36,3 +36,8 @@ num.partitions=1
 ```bash 
 bin/kafka-topics.sh --list --zookeeper localhost:2181
 ```
+
+###### Delete a specific topic (twitter-stream in this case)
+```bash
+bin/zookeeper-shell.sh localhost:2181 deleteall /brokers/topics/twitter-stream
+```
