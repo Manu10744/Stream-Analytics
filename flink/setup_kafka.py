@@ -32,4 +32,5 @@ with open(TWITTER_DATA_PATH, "r") as dataset:
                 # Retry sending tweet
                 p.produce(KAFKA_TOPIC_TWITTER, value=tweet)
 
+p.flush(30)
 print("Data generation done!" + "\n")
