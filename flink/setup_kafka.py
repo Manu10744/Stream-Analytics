@@ -5,7 +5,7 @@ from confluent_kafka import Producer
 DATA_GENERATION_IN_MB = 100
 DATASET_SIZE_IN_MB = 10
 
-TWITTER_DATA_PATH = "/home/ubuntu/Stream-Analytics/data/dataset.json"
+TWITTER_DATA_PATH = "/home/ubuntu/dataset.json"
 KAFKA_TOPIC_TWITTER = "twitter-stream"
 # Produce the data / write it to the Kafka Cluster
 producer_config = {
