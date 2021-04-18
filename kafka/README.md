@@ -17,6 +17,25 @@ So, in short, an Apache Kafka Streaming Environment has three main components:
 - **Broker**: Stores the arriving new data in the corresponding Topic and sends data to the Consumers
 - **Consumers**: Subscribes to a topic and thus **receives** a stream of the data
 
+### Setup
+To start the Apache Kafka Environment, we need to have at least two shell sessions active.
+
+
+In Shell 1 we start the ZooKeeper Service that's still required by Kafka:
+
+```bash
+$ cd kafka_2.13-2.7.0
+$ bin/zookeeper-server-start.sh config/zookeeper.properties
+```
+
+In Shell 2 we start the Apache Kafka Server:
+
+```bash
+$ bin/kafka-server-start.sh config/server.properties
+```
+
+<hr>
+
 ### Useful Commands and Settings
 
 #### Settings
