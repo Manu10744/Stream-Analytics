@@ -10,9 +10,9 @@ env.set_parallelism(1)
 
 type_info = Types.ROW([Types.ROW([Types.STRING(), Types.ROW([Types.INT(), Types.INT(), Types.INT(), Types.INT()]), Types.STRING(), Types.STRING(), Types.STRING(),
                                  Types.STRING(), Types.STRING()]),
-                      Types.ROW([Types.BASIC_ARRAY(Types.ROW([Types.BOOLEAN(), Types.STRING(), Types.STRING(), Types.STRING(), Types.ROW([Types.INT(), Types.INT(), Types.INT(), Types.INT()]),
-                                                       Types.STRING()]))]),
-                      Types.BASIC_ARRAY(Types.ROW([Types.INT(), Types.STRING()]))])
+                      Types.ROW([Types.ROW([Types.ROW([Types.BOOLEAN(), Types.STRING(), Types.STRING(), Types.STRING(), Types.ROW([Types.INT(), Types.INT(), Types.INT(), Types.INT()]),
+                                                       Types.STRING()])])]),
+                      Types.ROW([Types.ROW([Types.INT(), Types.STRING()])])])
 json_row_schema = JsonRowDeserializationSchema.builder().type_info(type_info).build()
 kafka_props = {'bootstrap.servers': 'localhost:9092', 'group.id': 'twitter_consumers'}
 kafka_consumer = FlinkKafkaConsumer("twitter-stream, json_row_schema, kafka_props")
