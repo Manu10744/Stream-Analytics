@@ -15,7 +15,7 @@ type_info = Types.ROW([Types.ROW([Types.STRING(), Types.ROW([Types.INT(), Types.
                       Types.ROW([Types.ROW([Types.INT(), Types.STRING()])])])
 json_row_schema = JsonRowDeserializationSchema.builder().type_info(type_info).build()
 kafka_props = {'bootstrap.servers': 'localhost:9092', 'group.id': 'twitter_consumers'}
-kafka_consumer = FlinkKafkaConsumer("twitter-stream, json_row_schema, kafka_props")
+kafka_consumer = FlinkKafkaConsumer("twitter-stream", json_row_schema, kafka_props)
 # kafka_consumer = FlinkKafkaConsumer("twitter-stream", SimpleStringSchema(), kafka_props)
 
 ds = env.add_source(kafka_consumer)
