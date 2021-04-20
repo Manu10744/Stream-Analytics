@@ -19,6 +19,6 @@
 5. Change to Flink directory and run the application (won't do anything until Kafka has produced data):  
 `$ cd flink-1.12.2`  
    `$ ./bin/start-cluster.sh`  
-   `$./bin/flink run --python /home/ubuntu/read_kafka.py --jarfile /home/ubuntu/flink-sql-connector-kafka_2.11-1.12.0.jar
+   `$ ./bin/flink run --python /home/ubuntu/read_kafka.py --jarfile /home/ubuntu/flink-sql-connector-kafka_2.11-1.12.2.jar
 `
    
