@@ -1,29 +1,24 @@
-## Loading input: 
-Flink offers three APIs: 
-- DataStream API
-- Table API
-- DataSet API (has been soft deprecated; using the DatasStream API is recommended...also not available in PyFlink)
-
-**DataStream API:**  
-- One possibility to load data into a stream via the DS API is to use connectors. Unfortunately with our input (JSON-Format) that is not an option, as there 
-no DS connector that supports JSON files.
-- Alternatively, one could implement a custom data source. However, this seems like an unreasonable amount of effort.
-
-**Table API:**
-- Contrary to the DS API, the Table API offers the FileSystem-Connector which allows to load data from a file. Moreover, it supports JSON
-  formatted data. Currently, this seems like the best option. Note that our JSON file will need to be converted to a newline-delimited JSON format (https://jsonlines.org/). 
-  This can be done in Python. Issues may arise with the (required?) partitioning of files. Also, in this case the connector-jar must be provided as a project dependency. 
-- Alternatively, the Table API offers the possibility to load data from a pandas dataframe/a collection. As JSON files can be loaded into pd dfs in Python, this could also
-  be a viable option. A collection could certainly also be created from the JSON.
-  
-  EDIT: The FileSystem-Connector seems to work
+##Instructions
+1. Setup FLink (requires JDK 8 and Python >= 3.5) - Download and untar Flink:    
+`$ wget https://downloads.apache.org/flink/flink-1.12.2/flink-1.12.2-bin-scala_2.11.tgz`  
+`$ tar -zxvf flink-1.12.2-bin-scala_2.11.tgz`
 
 
+2. Install PyFlink:  
+`$ python3 -m pip install apache-flink`  
+   
+   
+3. Download python-script:  
+`$ wget https://raw.githubusercontent.com/Manu10744/Stream-Analytics/master/flink/read_kafka.py` 
+   
 
-## TODO:
-- Convert Tweets-Table to Stream. Problem: Streaming from Source Files is not yet supported: 
-  https://stackoverflow.com/questions/66776601/flink-sql-csv-streaming-continuously
-  http://apache-flink-user-mailing-list-archive.2336050.n4.nabble.com/Filesystem-as-a-stream-source-in-Table-SQL-API-td39696.html
-  
+4. Download depnedency (Kafka-Connector)  
+`$ wget https://repo.maven.apache.org/maven2/org/apache/flink/flink-sql-connector-kafka_2.11/1.12.2/flink-sql-connector-kafka_2.11-1.12.2.jar`
+   
 
-
+5. Change to Flink directory and run the application (won't do anything until Kafka has produced data):  
+`$ cd flink-1.12.2`  
+   `$ ./bin/start-cluster.sh`  
+   `$./bin/flink run --python /home/ubuntu/read_kafka.py --jarfile /home/ubuntu/flink-sql-connector-kafka_2.11-1.12.0.jar
+`
+   
