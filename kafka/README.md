@@ -18,17 +18,17 @@ So, in short, an Apache Kafka Streaming Environment has three main components:
 - **Consumers**: Subscribes to a topic and thus **receives** a stream of the data
 
 ### Setup
-To start the Apache Kafka Environment, we need to have at least two shell sessions active.
+After installing Apache Kafka we can start the required environment. For this we need to have at least two shell sessions active.
 
 
-In Shell 1 we start the ZooKeeper Service that's still required by Kafka:
+In Shell 1 we start the **ZooKeeper Service** that's still required by Kafka:
 
 ```bash
 $ cd kafka_2.13-2.7.0
 $ bin/zookeeper-server-start.sh config/zookeeper.properties
 ```
 
-In Shell 2 we start the Apache Kafka Server:
+In Shell 2 we start the Apache **Kafka Server**:
 
 ```bash
 $ bin/kafka-server-start.sh config/server.properties
@@ -40,13 +40,18 @@ $ bin/kafka-server-start.sh config/server.properties
 
 #### Settings
 
+###### config/server.properties
 ```bash
-# ./config/server.properties
+# Unique id for the broker
+broker.id=0
 
 # Number of partitions per topic and thus a factor for possible parallelism.
 # Common rule of thumb: Partitions = Desired Throughput / Partition Speed
 # (Estimation of speed for one partition: 10 MB/s)
 num.partitions=1
+
+# Use the log appending time instead of producer creation time for message timestamps
+log.message.timestamp.type=LogAppendTime
 ```
 
 #### Commands 

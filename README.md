@@ -7,9 +7,10 @@ Streaming Analytics Project for the Course "Advanced Analytics and Machine Learn
 - Manuel Neumayer
 
 #### Dataset:
-- ~14.000 Tweets from the Twitter Streaming API
+- ~14.500 Tweets from the Twitter Streaming API
 
 ##### LRZ Cloud:
+Apache Kafka and Flink are evaluated using VMs on the LRZ Cloud:
 -  https://cc.lrz.de/auth/login/?next=/
 
 <hr>
@@ -19,5 +20,9 @@ The purpose of this project is to analyze and compare two famous Streaming Platf
 The results are documented in a conference paper.
 
 #### Terminology
-- Throughput: Amount of MBs sent per unit time (e.g. second)
-- Latency: Amount of elapsed time between the point of sending a stream object and receiving it
+- **Throughput**: Amount of MBs sent per unit time (e.g. second)
+- **Latency**: Amount of elapsed time between the point of sending a stream object and receiving it
+
+#### Useful reads
+- [Apache Kafka Confluent Benchmark report](https://www.confluent.de/blog/kafka-fastest-messaging-system/)
+- [LinkedIn Kafka Benchmark Report](https://engineering.linkedin.com/kafka/benchmarking-apache-kafka-2-million-writes-second-three-cheap-machines)
