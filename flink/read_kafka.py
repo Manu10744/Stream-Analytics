@@ -27,7 +27,7 @@ kafka_props = {'bootstrap.servers': 'localhost:9092', 'group.id': 'twitter_consu
 kafka_consumer = FlinkKafkaConsumer("twitter-stream", SimpleStringSchema(), kafka_props)
 
 stream = env.add_source(kafka_consumer)
-stream_ts = stream.map(lambda x: x[0])
+stream_ts = stream.map(lambda x: x.timestamp())
 stream_ts.print()
 env.execute()
 
