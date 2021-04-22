@@ -1,10 +1,11 @@
 from pyflink.common.serialization import JsonRowDeserializationSchema
 from pyflink.common.serialization import SimpleStringSchema
 from pyflink.common.typeinfo import Types
-from pyflink.datastream import StreamExecutionEnvironment
+from pyflink.datastream import StreamExecutionEnvironment, TimeCharacteristic
 from pyflink.datastream.connectors import FlinkKafkaConsumer
 
 env = StreamExecutionEnvironment.get_execution_environment()
+env.set_stream_time_characteristic(TimeCharacteristic.EventTime)
 env.set_parallelism(1)
 
 '''
@@ -26,7 +27,8 @@ kafka_props = {'bootstrap.servers': 'localhost:9092', 'group.id': 'twitter_consu
 kafka_consumer = FlinkKafkaConsumer("twitter-stream", SimpleStringSchema(), kafka_props)
 
 stream = env.add_source(kafka_consumer)
-stream.map(just_print).print()
+stream_ts = stream.map(lambda x: x[0])
+stream_ts.print()
 env.execute()
 
 
@@ -44,4 +46,10 @@ Example json:
          "name":"A","created_at":"2030-05-11T09:19:08.000Z",
          "public_metrics":{"followers_count":0,"following_count":0,"tweet_count":557,"listed_count":0},"username":"A"}]},
  "matching_rules":[{"id":1,"tag":"A"}]}
+'''
+
+'''
+Notes: 
+- It seems that there can't be Timestamping without Watermarking. We need Timestamping because I'm not sure the timestamp 
+  from Kafka can be accessed otherwise. 
 '''
