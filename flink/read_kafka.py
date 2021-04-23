@@ -25,7 +25,7 @@ def just_print(msg):
 class MyProcessFunction(ProcessFunction):
 
     def process_element(self, value, ctx: 'ProcessFunction.Context'):
-        result = str(ctx.timestamp())
+        result = "Timestamp = {}".format(str(ctx.timestamp()))
         yield result
 
 
