@@ -18,12 +18,15 @@ type_info = Types.ROW([Types.ROW([Types.STRING(), Types.ROW([Types.INT(), Types.
 json_row_schema = JsonRowDeserializationSchema.builder().type_info(type_info).build()
 '''
 
+latencies = []
+
 
 class MyProcessFunction(ProcessFunction):
 
     def process_element(self, value, ctx: 'ProcessFunction.Context'):
-        result = "Kafka-Timestamp = {} \t Flink-Timestamp: {}".format(str(ctx.timestamp()), str(time.time() * 1000))
+        result = "Latency: {} ms".format(str(time.time() * 1000 - ctx.timestamp()))
         yield result
+        latencies.append(time.time() * 1000 - ctx.timestamp())
 
 
 kafka_props = {'bootstrap.servers': 'localhost:9092', 'group.id': 'twitter_consumers'}
@@ -36,6 +39,7 @@ stream = env.add_source(kafka_consumer)
 stream.process(MyProcessFunction(), output_type=Types.STRING()).print()
 env.execute()
 
+print('Number of latencies: ', len(latencies))
 
 '''
 submit job: 
