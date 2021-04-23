@@ -1,7 +1,8 @@
 # Apache Kafka
 
 <br>
-This section is dedicated to testing the performance of Apache Kafka using **one Kafka Broker** and **one Topic Partition** (and thus, **one** consumer).
+
+This section is dedicated to testing the performance of Apache Kafka using **one** Kafka Broker and **one** Topic Partition (and thus, **one** consumer).
 
 ### Test Configuration
 
