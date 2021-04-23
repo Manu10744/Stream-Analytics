@@ -1,15 +1,13 @@
-import time
 from pyflink.datastream.functions import ProcessFunction
 from pyflink.common.serialization import SimpleStringSchema
 from pyflink.common.typeinfo import Types
 from pyflink.datastream import StreamExecutionEnvironment, TimeCharacteristic
 from pyflink.datastream.connectors import FlinkKafkaConsumer
+import time
 
 env = StreamExecutionEnvironment.get_execution_environment()
 env.set_stream_time_characteristic(TimeCharacteristic.EventTime)
 env.set_parallelism(1)
-
-latencies = []
 
 '''
 type_info = Types.ROW([Types.ROW([Types.STRING(), Types.ROW([Types.INT(), Types.INT(), Types.INT(), Types.INT()]), Types.STRING(), Types.STRING(), Types.STRING(),
@@ -21,16 +19,10 @@ json_row_schema = JsonRowDeserializationSchema.builder().type_info(type_info).bu
 '''
 
 
-def just_print(msg):
-    return "Message: {}".format(msg)
-
-
 class MyProcessFunction(ProcessFunction):
 
     def process_element(self, value, ctx: 'ProcessFunction.Context'):
-        kafka_ts = "Timestamp = {}".format(int(ctx.timestamp()))
-        result = (time.time() * 1000) - kafka_ts
-        latencies.append(result)
+        result = "Kafka-Timestamp = {} \t Flink-Timestamp: {}".format(str(ctx.timestamp()), str(time.time() * 1000))
         yield result
 
 
@@ -44,7 +36,7 @@ stream = env.add_source(kafka_consumer)
 stream.process(MyProcessFunction(), output_type=Types.STRING()).print()
 env.execute()
 
-print('LATENCIES: ', len(latencies))
+
 '''
 submit job: 
 ./bin/flink run --python /home/ubuntu/read_kafka.py --jarfile /home/ubuntu/flink-sql-connector-kafka_2.11-1.12.0.jar
