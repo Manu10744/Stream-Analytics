@@ -15,8 +15,8 @@ All VMs are running in the LRZ Cloud using Ubuntu 20.04.
 
 ##### Test Setup:
 For each Broker we are using:
-- **4** vCPUS
-- **18** GB RAM
+- **10** vCPUS
+- **45** GB RAM
 
 <br>
 
