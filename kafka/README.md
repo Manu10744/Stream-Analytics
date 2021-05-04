@@ -52,16 +52,31 @@ num.partitions=1
 
 # Use the log appending time instead of producer creation time for message timestamps
 log.message.timestamp.type=LogAppendTime
+
+# Connection string to be used by the Kafka Broker to register itself
+zookeeper.connect=<ZOOKEEPER_HOSTNAME>:2181
 ```
 
 #### Commands 
-###### List all registered Kafka Topics
 
+###### List all registered Kafka Topics
 ```bash 
-bin/kafka-topics.sh --list --zookeeper localhost:2181
+./bin/kafka-topics.sh --list --zookeeper localhost:2181
 ```
 
 ###### Delete a specific topic (twitter-stream in this case)
 ```bash
-bin/zookeeper-shell.sh localhost:2181 deleteall /brokers/topics/twitter-stream
+./bin/zookeeper-shell.sh localhost:2181 deleteall /brokers/topics/twitter-stream
+```
+
+###### See all consumers and their information
+```bash
+./bin/kafka-consumer-groups.sh  --list --bootstrap-server localhost:9092
+
+./bin/kafka-consumer-groups.sh --describe --group mygroup --bootstrap-server localhost:9092
+```
+
+###### See all available brokers
+```bash
+./bin/zookeeper-shell.sh localhost:2181 ls /brokers/ids
 ```
