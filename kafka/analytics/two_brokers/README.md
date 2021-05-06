@@ -21,4 +21,12 @@ For each Broker we are using:
 <br>
 
 ## Results
-TODO
+####  Throughput
+<img src="./img/2_broker_throughputs.png" width="75%" height="75%" alt="Producer Throughput">
+
+#### Latency
+##### Consumer 1
+<img src="./img/consumer1_latencies.png" width="75%" height="75%" alt="consumer 1 latency">
+
+##### Consumer 2
+<img src="./img/consumer2_latencies.png" width="75%" height="75%" alt="consumer 2 latency">
