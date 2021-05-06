@@ -39,7 +39,7 @@ All VMs are running in the LRZ Cloud using Ubuntu 20.04.
 <img src="./img/consumer_latency_2vCPUs.png" width="75%" height="75%" alt="2 vCPU latency">
 
 ##### 4 vCPUs
-<img src="./img/consumer_latency_2vCPUs.png" width="75%" height="75%" alt="4 vCPU latency">
+<img src="./img/consumer_latency_4vCPUs.png" width="75%" height="75%" alt="4 vCPU latency">
 
 ##### 10 vCPUs
-<img src="./img/consumer_latency_2vCPUs.png" width="75%" height="75%" alt="10 vCPU latency">
+<img src="./img/consumer_latency_10vCPUs.png" width="75%" height="75%" alt="10 vCPU latency">
